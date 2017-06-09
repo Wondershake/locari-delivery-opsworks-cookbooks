@@ -1,7 +1,7 @@
 ::Chef::Recipe.send(:include, AddSecurityGroupHelper)
 
 PUBLIC_IPADDRESS=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
-TARGET_DB_SG="locari-reader"
+TARGET_DB_SG="locari-delivery-v2"
 RDS_SG_STATUS_FILE="/tmp/rds_security_group_status"
 
 get_sts_info_helper
