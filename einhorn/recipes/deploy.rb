@@ -1,7 +1,9 @@
 include_recipe 'deploy'
 
-chef_gem 'toml-rb'
-require 'toml'
+chef_gem 'toml-rb' do
+  version "1.1.2"
+end
+require 'toml-rb'
 
 node[:deploy].each do |application, deploy|
   opsworks_deploy_dir do
@@ -20,7 +22,7 @@ node[:deploy].each do |application, deploy|
   # generate config
   # TODO: move this to its own recipe
   if deploy[:app_config]
-  	toml_data = TOML.dump(deploy[:app_config])
+  	toml_data = TomlRB.dump(deploy[:app_config])
   	file "#{shared_dir}/config/config.toml" do
   		group deploy[:group]
   		owner deploy[:user]
