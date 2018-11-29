@@ -7,8 +7,6 @@ gem_package 'einhorn' do
   options '--no-user-install'
 end
 
-chef_gem 'toml-rb'
-
 node[:deploy].each do |application, deploy|
   deploy = node[:deploy][application]
   shared_dir = "#{deploy[:deploy_to]}/shared"
